@@ -4,6 +4,10 @@ import os
 import random
 import requests
 import time
+import re
+import datetime
+from time import sleep
+stoday = datetime.datetime.now().strftime('%Y-%m-%d')
 
 # 小北学生 账号密码
 USERNAME = os.getenv("XB_USERNAME")
@@ -31,6 +35,36 @@ HEADERS = {
     "accept-language": "zh-cn",
     "accept-encoding": "gzip, deflate, br"
 }
+
+
+def yiyan():
+    try:
+        #指定 api 的接口地址并设定 url 参数
+        api_url = 'https://v1.hitokoto.cn/?c=b&encode=json'
+        #向网站 api 发送请求并获取返回的数据
+        response = requests.get(api_url)
+        #将 json 数据对象转化为字典
+        res = json.loads(response.text)
+        #取出一言正文和出处拼装为字符串
+        a_word = res['hitokoto']+'-----出自'+'《'+res['from']+'》'
+        #输出一言
+        txt = a_word
+    except:
+        txt = '随言获取失败，不清楚什么问题，问问作者吧'
+    return txt
+
+
+    #输出60秒新闻 
+def news_60s():
+    response = requests.get(
+        'https://www.zhihu.com/api/v4/columns/c_1261258401923026944/items')
+    html = response.json()['data'][0]['content']
+    cmd = r'data-pid="[^"]*">(\d+、[^；]*)；</p>'
+    results = re.findall(cmd, html, re.S)
+    results.insert(0, f'\n\n{stoday} · 60秒新闻')
+    return '\n\n'.join(results).replace('"', '"')
+
+
 
 
 def is_open():
@@ -316,7 +350,14 @@ if __name__ == '__main__':
         status = json.loads(respond)['code']
         if status == 200:
             print("恭喜您打卡成功啦！")
-
+            message = yiyan()+news_60s()
+            url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
+            desp = message
+            data = {
+            'text': '小北自动打卡成功啦!',
+            'desp': desp
+            }
+            requests.post(url, data=data)
             # server酱
             if SENDKEY != '':
                 sc_send("打卡成功啦🎉")
@@ -329,7 +370,7 @@ if __name__ == '__main__':
                 wxapp_notify("打卡成功啦🎉")
         else:
             print("Error：" + json.loads(respond)['msg'])
-
+            response = requests.get('https://sctapi.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send?title=打卡失败啦！！！'+yiyan())
             print(SENDKEY)
 
             # server酱
