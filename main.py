@@ -362,7 +362,7 @@ if __name__ == '__main__':
                 wxapp_notify("打卡成功啦🎉")
         else:
             print("Error：" + json.loads(respond)['msg'])
-            Error  =  "Error原因：" +json.loads(respond)['msg' + "\n\n"]
+            Error  =  "Error原因：" + json.loads(respond)['msg'] + "\n\n"
             message = Error+yiyan()+news_60s()
             url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
             desp = message
