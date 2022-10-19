@@ -363,7 +363,7 @@ if __name__ == '__main__':
         else:
             print("Error：" + json.loads(respond)['msg'])
             Error  =  "Error原因：" + json.loads(respond)['msg'] + "\n\n"
-            message = Error+yiyan()+news_60s()
+            message =  "Error原因：" + json.loads(respond)['msg'] + "\n\n" +yiyan()+news_60s()
             url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
             desp = message
             data = {
