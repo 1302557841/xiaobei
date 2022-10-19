@@ -46,7 +46,7 @@ def yiyan():
         #将 json 数据对象转化为字典
         res = json.loads(response.text)
         #取出一言正文和出处拼装为字符串
-        a_word = res[\n\n'hitokoto']+'-----出自'+'《'+res['from']+'》'
+        a_word = res['hitokoto']+'-----出自'+'《'+res['from']+'》'
         #输出一言
         txt = a_word
     except:
@@ -362,7 +362,7 @@ if __name__ == '__main__':
                 wxapp_notify("打卡成功啦🎉")
         else:
             print("Error：" + json.loads(respond)['msg'])
-            Error  =  json.loads(respond)['msg']
+            Error  =  "Error原因：" +json.loads(respond)['msg' + "\n\n"]
             message = Error+yiyan()+news_60s()
             url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
             desp = message
