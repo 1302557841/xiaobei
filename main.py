@@ -46,7 +46,7 @@ def yiyan():
         #将 json 数据对象转化为字典
         res = json.loads(response.text)
         #取出一言正文和出处拼装为字符串
-        a_word = res['hitokoto']+'-----出自'+'《'+res['from']+'》'
+        a_word = res[\n\n'hitokoto']+'-----出自'+'《'+res['from']+'》'
         #输出一言
         txt = a_word
     except:
@@ -188,14 +188,6 @@ def tg_send(context):
         "TG推送失败"
     else:
         "TG推送完成"
-# 一言
-def yiyan():
-    try:
-        txt = requests.get("https://api.xiaobaibk.com/api/yiyan.php").text
-    except:
-        txt = '随言获取失败，不清楚什么问题，问问作者吧'
-    return txt
-
 
 def wxapp_notify(content,title='小北成功打卡通知'):
     app_params = WX_APP.split(',')
