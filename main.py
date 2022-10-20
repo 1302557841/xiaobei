@@ -62,14 +62,7 @@ def news_60s():
     results = re.findall(cmd, html, re.S)
     results.insert(0, f'\n\n{stoday} · 60秒新闻')
     return '\n\n'.join(results).replace('"', '"')
-    message = news_60s()
-    url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
-    desp = message
-    data = {
-    'text': {stoday} +'· 60秒新闻',
-    'desp': desp
-    }
-    requests.post(url, data=data)
+   
 
 
 
@@ -110,6 +103,16 @@ if USERNAME is None or PASSWORD is None:
     print("微信通知,开启需填写KEY，教程：https://ghurl.github.io/?130")
     WX_APP = input("微信通知密钥,留空则不开启:")
     PASSWORD = str(base64.b64encode(PASSWORD.encode()).decode())
+    # 推送
+    message = news_60s()
+    url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
+    desp = message
+    data = {
+    'text': {stoday} +'· 60秒新闻',
+    'desp': desp
+    }
+    requests.post(url, data=data)
+    
 else:
     PASSWORD = str(base64.b64encode(PASSWORD.encode()).decode())
 
