@@ -96,14 +96,14 @@ def ts_send():
     try:
         #response = requests.post(url=url,headers=headers,params=payload)
         #推送
-        mess = news_60s()
+        message = news_60s()
         url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
-        desp = mess
-        dat = {
+        desp = message
+        data = {
         'text': {stoday} +'· 60秒新闻',
         'desp': desp
         }
-        requests.post(url, data=dat)
+        requests.post(url, data=data)
     except:
         "推送失败"
     else:
@@ -316,7 +316,7 @@ if __name__ == '__main__':
             wxapp_notify("登录失败，失败原因：" + msg)
     else:
         print("登录成功！")
-
+        ts_send()
         # HEADERS.update({'authorization', token})
         # 换个方法
         HEADERS['authorization'] = json.loads(res)['token']
