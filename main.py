@@ -97,7 +97,7 @@ def ts_send():
         #response = requests.post(url=url,headers=headers,params=payload)
         #推送
         message = news_60s()
-        url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
+        url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
         desp = message
         data = {
         'text': {stoday} +'· 60秒新闻',
