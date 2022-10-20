@@ -103,6 +103,7 @@ def ts_send():
         'text': {stoday} +'· 60秒新闻',
         'desp': desp
         }
+        time.sleep(3)
         requests.post(url, data=data)
     except:
         "推送失败"
