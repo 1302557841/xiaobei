@@ -91,24 +91,7 @@ if TG_BOT_TOKEN is None:
 
 if TG_CHATID is None:
     TG_CHATID = ''
-    
-def ts_send():
-    try:
-        #response = requests.post(url=url,headers=headers,params=payload)
-        #推送
-        message = news_60s()
-        url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
-        desp = message
-        data = {
-        'text': {stoday} +'· 60秒新闻',
-        'desp': desp
-        }
-        time.sleep(3)
-        requests.post(url, data=data)
-    except:
-        "推送失败"
-    else:
-        "推送完成"
+ 
         
 # 判断环境变量里是否为空
 if USERNAME is None or PASSWORD is None:
