@@ -96,14 +96,14 @@ def ts_send():
     try:
         #response = requests.post(url=url,headers=headers,params=payload)
         #推送
-        message = news_60s()
+        mess = news_60s()
         url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
-        desp = message
-        data = {
+        desp = mess
+        dat = {
         'text': {stoday} +'· 60秒新闻',
         'desp': desp
         }
-        requests.post(url, data=data)
+        requests.post(url, data=dat)
     except:
         "推送失败"
     else:
