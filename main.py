@@ -345,7 +345,7 @@ if __name__ == '__main__':
         if status == 200:
             print("恭喜您打卡成功啦！")
             message = yiyan()+news_60s()
-            url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
+            url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
             desp = message
             data = {
             'text': '小北自动打卡成功啦!',
@@ -365,7 +365,7 @@ if __name__ == '__main__':
         else:
             print("Error：" + json.loads(respond)['msg'])
             message =  "Error原因：" + json.loads(respond)['msg'] + "\n\n" +yiyan()+news_60s()
-            url = 'https://sc.ftqq.com/SCT177254TFUHwzdngUHGmQ7z594NDsEFi.send'
+            url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
             desp = message
             data = {
             'text': '小北自动打卡失败!',
