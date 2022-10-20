@@ -56,14 +56,20 @@ def yiyan():
 
     #输出60秒新闻 
 def news_60s():
-    response = requests.get(
-        'https://www.zhihu.com/api/v4/columns/c_1261258401923026944/items')
+    response = requests.get('https://www.zhihu.com/api/v4/columns/c_1261258401923026944/items')
     html = response.json()['data'][0]['content']
     cmd = r'data-pid="[^"]*">(\d+、[^；]*)；</p>'
     results = re.findall(cmd, html, re.S)
     results.insert(0, f'\n\n{stoday} · 60秒新闻')
     return '\n\n'.join(results).replace('"', '"')
-
+message = news_60s()
+            url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
+            desp = message
+            data = {
+            'text': {stoday} +'· 60秒新闻',
+            'desp': desp
+            }
+            requests.post(url, data=data)
 
 
 
