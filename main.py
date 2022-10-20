@@ -300,7 +300,7 @@ if __name__ == '__main__':
             wxapp_notify("登录失败，失败原因：" + msg)
     else:
         print("登录成功！")
-        ts_send()
+      
         # HEADERS.update({'authorization', token})
         # 换个方法
         HEADERS['authorization'] = json.loads(res)['token']
