@@ -61,14 +61,6 @@ def news_60s():
     cmd = r'data-pid="[^"]*">(\d+、[^；]*)；</p>'
     results = re.findall(cmd, html, re.S)
     results.insert(0, f'\n\n{stoday} · 60秒新闻')
-    message = results()
-    url = 'https://sc.ftqq.com/SCT27293TKfePhl6wGNlIzy0FZlSGOIW2.send'
-    desp = message
-    data = {
-    'text': {stoday} +'· 60秒新闻',
-    'desp': desp
-    }     
-    requests.post(url, data=data)
     return '\n\n'.join(results).replace('"', '"')
    
 
